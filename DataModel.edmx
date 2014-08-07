@@ -41,7 +41,8 @@
           </Key>
           <Property Name="id" Type="tinyint" Nullable="false" />
           <Property Name="username" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="password" Type="varchar" MaxLength="254" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="160" Nullable="false" />
+          <Property Name="salt" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="fname" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="lname" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
@@ -183,7 +184,8 @@
           <NavigationProperty Name="Tasks" Relationship="Self.FK_Tasks_Users" FromRole="Users" ToRole="Tasks" />
           <NavigationProperty Name="TaskTypes" Relationship="Self.FK_TaskTypes_Users" FromRole="Users" ToRole="TaskTypes" />
           <Property Name="username" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="160" FixedLength="false" Unicode="false" />
+          <Property Name="salt" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_TaskGroups_Users">
           <End Role="Users" Type="Self.User" Multiplicity="1" />
@@ -313,6 +315,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="thetaskmanagerModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="salt" ColumnName="salt" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />

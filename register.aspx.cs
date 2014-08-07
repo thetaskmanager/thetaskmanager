@@ -46,12 +46,17 @@ namespace thetaskmanager
             User newUser = new User();
             newUser.username = tbUsername.Text;
 
-            //hash the password before storing it in the DB
-            newUser.password = CreatePasswordHash(tbPassword.Text, CreateSalt(8));
+            //Generate a "salt" to use to padd the password
+            string uniqueSalt = CreateSalt(8);
+            newUser.salt = uniqueSalt;
+
+            //Hash the password
+            newUser.password = CreatePasswordHash(tbPassword.Text, uniqueSalt);
 
             newUser.fname = tbFName.Text;
             newUser.lname = tbLName.Text;
 
+            
             /**
              * Here we use a using() expression so that once the expression is finished
              * evaluating the new object that was instantiated calls it's Dispose() method
@@ -59,6 +64,8 @@ namespace thetaskmanager
              */
             using(var contextObj = new thetaskmanagerEntities()) {
                 contextObj.Users.Add(newUser);
+
+                contextObj.SaveChanges();
             }// end using expression
 
         }// end event handler for Register button
