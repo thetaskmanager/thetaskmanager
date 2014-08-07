@@ -73,7 +73,9 @@
     <Content Include="login.aspx" />
     <Content Include="register.aspx" />
     <Content Include="styles\default_base.css" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataModel.Context.cs">

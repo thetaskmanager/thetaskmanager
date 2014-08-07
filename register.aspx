@@ -19,17 +19,10 @@
             <asp:Label runat="server" Text="Username" ID="lblUsername"></asp:Label>
             <asp:TextBox runat="server" ID="tbUsername"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required Field" ControlToValidate="tbUsername"></asp:RequiredFieldValidator><br />
             <asp:Label runat="server" Text="Password" ID="lblPassword"></asp:Label>
-<<<<<<< HEAD
-            <asp:TextBox runat="server" ID="tbPassword"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Required Field" ControlToValidate="tbPassword"></asp:RequiredFieldValidator><br />
+            <asp:TextBox runat="server" ID="tbPassword" TextMode="Password"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Required Field" ControlToValidate="tbPassword"></asp:RequiredFieldValidator><br />
             <asp:Label runat="server" Text="Confirm Password" ID="lblConfirmPassword"></asp:Label>
-            <asp:TextBox runat="server" ID="tbConfirmPassword"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Required Field" Display="Dynamic" ControlToValidate="tbConfirmPassword"></asp:RequiredFieldValidator><asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="The passwords did not match" ControlToCompare="tbPassword" ControlToValidate="tbConfirmPassword" Display="Dynamic"></asp:CompareValidator><br /><br />
+            <asp:TextBox runat="server" ID="tbConfirmPassword" TextMode="Password"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Required Field" Display="Dynamic" ControlToValidate="tbConfirmPassword"></asp:RequiredFieldValidator><asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="The passwords did not match" ControlToCompare="tbPassword" ControlToValidate="tbConfirmPassword" Display="Dynamic"></asp:CompareValidator><br /><br />
             <asp:Button runat="server" Text="Register" ID="btRegister" OnClick="btRegister_Click" />
-=======
-            <asp:TextBox runat="server" ID="tbPassword" TextMode="Password"></asp:TextBox><br />
-            <asp:Label runat="server" Text="Confirm Password" ID="lblConfirmPassword"></asp:Label>
-            <asp:TextBox runat="server" ID="tbConfirmPassword" TextMode="Password"></asp:TextBox><br /><br />
-            <asp:Button runat="server" Text="Register" ID="btRegister" />
->>>>>>> origin/master
         </form>
     </div>
 
