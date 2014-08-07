@@ -15,10 +15,11 @@ body div {
 }
 
 .Header {
-    background-color: #5F94DE;
+    background-color: #79A9FC;
     border: solid 3px #5483C4;
     margin: auto;
-    width: 50%;
+    padding-left: 10%;
+    width: 35%;
 }
 
 #title {
@@ -29,6 +30,7 @@ body div {
 
 #LoginRegister {
     display: inline;
+    background-color: #5F94DE;
     width: 35%;
 }
 
