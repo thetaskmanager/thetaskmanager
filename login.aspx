@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/public.Master" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="thetaskmanager.login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_header" runat="server">
     <div class="Header">
-        <h1 id="title"><u>The Task Manager</u></h1>
+        <h1 id="title"><u><a href="Default.aspx">The Task Manager</a></u></h1>
         <div id="LoginRegister">
             <a href="register.aspx">Register</a>
         </div>

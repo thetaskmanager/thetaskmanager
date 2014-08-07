@@ -27,6 +27,10 @@ body div div {
     width: 35%;
 }
 
+#title a {
+    color: black;
+}
+
 #title {
     display: inline;
     font-size: xx-large;
