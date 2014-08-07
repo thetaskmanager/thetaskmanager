@@ -12,6 +12,10 @@ body div {
     text-align:center;
 }
 
+div.aspNetHidden {
+    display: none;
+}
+
 footer {
     text-align: center;
     background-color: #79A9FC;
