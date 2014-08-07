@@ -13,5 +13,10 @@ namespace thetaskmanager
         {
 
         }
+
+        protected void btRegister_Click(object sender, EventArgs e)
+        {
+
+        }// end event handler for Register button
     }
 }
