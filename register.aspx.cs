@@ -16,57 +16,42 @@ namespace thetaskmanager
 
         }
 
-        //Create a random number to use as a "salt" (Padd the password)
-        private static string CreateSalt(int size)
-        {
-            // Generate a pseudo random number
-            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
-            byte[] buff = new byte[size];
-            rng.GetBytes(buff);
-
-            // Encode the number as a Base64 string and return it
-            return Convert.ToBase64String(buff);
-        }// end CreateSalt method
-
-        /* Generate a SHA1 hash of the password, using a salt (random string) to padd the password
-         * Padding with a salt decreases probability of the same passwords having the same hash
-         * Used SHA1 with an apparently deprecated method, but meh. I'm not using ASP.NET Membership for
-         * such a simple project. ASP.NET Membership does exactly this anyways, so meh..
-         */
-        private static string CreatePasswordHash(string pwd, string salt)
-        {
-            string saltAndPwd = String.Concat(pwd, salt);
-            string hashedPwd = FormsAuthentication.HashPasswordForStoringInConfigFile(saltAndPwd, "SHA1");
-            hashedPwd = String.Concat(hashedPwd, salt);
-            return hashedPwd;
-        }// end CreatePasswordHash method
-
         protected void btRegister_Click(object sender, EventArgs e)
         {
             User newUser = new User();
-            newUser.username = tbUsername.Text;
 
-            //Generate a "salt" to use to padd the password
-            string uniqueSalt = CreateSalt(8);
-            newUser.salt = uniqueSalt;
+            if (newUser.DoesUserExist(tbUsername.Text))
+            {
+                lblRegistrationMessages.Text = "A user with that username already exists!";
+            }
+            else
+            {
+                newUser.username = tbUsername.Text;
 
-            //Hash the password
-            newUser.password = CreatePasswordHash(tbPassword.Text, uniqueSalt);
+                //Generate a "salt" to use to padd the password
+                string uniqueSalt = newUser.CreateSalt(8);
+                newUser.salt = uniqueSalt;
 
-            newUser.fname = tbFName.Text;
-            newUser.lname = tbLName.Text;
+                //Hash the password
+                newUser.password = newUser.CreatePasswordHash(tbPassword.Text, uniqueSalt);
 
-            
-            /**
-             * Here we use a using() expression so that once the expression is finished
-             * evaluating the new object that was instantiated calls it's Dispose() method
-             * to destroy itself cleanly, without us manually worrying about it.
-             */
-            using(var contextObj = new thetaskmanagerEntities()) {
-                contextObj.Users.Add(newUser);
+                newUser.fname = tbFName.Text;
+                newUser.lname = tbLName.Text;
 
-                contextObj.SaveChanges();
-            }// end using expression
+                /**
+                 * Here we use a using() expression so that once the expression is finished
+                 * evaluating the new object that was instantiated calls it's Dispose() method
+                 * to destroy itself cleanly, without us manually worrying about it.
+                 */
+                using (var contextObj = new thetaskmanagerEntities())
+                {
+                    contextObj.Users.Add(newUser);
+
+                    contextObj.SaveChanges();
+                }// end using expression
+
+                Response.Redirect("taskHome.aspx");
+            }// if-else statement to control duplicate users
 
         }// end event handler for Register button
     }

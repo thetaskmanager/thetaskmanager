@@ -10,7 +10,10 @@
 namespace thetaskmanager
 {
     using System;
+    using System.Linq;
     using System.Collections.Generic;
+    using System.Security.Cryptography;
+    using System.Web.Security;
     
     public partial class User
     {
@@ -20,6 +23,58 @@ namespace thetaskmanager
             this.Tasks = new HashSet<Task>();
             this.TaskTypes = new HashSet<TaskType>();
         }
+
+        public Boolean DoesUserExist(string usernameIn)
+        {
+            using (var dbContextObj = new thetaskmanagerEntities())
+            {
+                //Query the database for a user with the same username
+                var queryResult = from user in dbContextObj.Users
+                             where user.username == usernameIn
+                             select user.username;
+
+                //Count how many results are found (Duplicates)
+                int resultCount = queryResult.Count();
+
+                Boolean isDuplicate;
+
+                if (resultCount < 1 )
+                {
+                    isDuplicate = false;
+                }
+                else
+                {
+                    isDuplicate = true;
+                }// end if-else flow control
+
+                return isDuplicate;
+            }
+        }
+
+        //Create a random number to use as a "salt" (Padd the password)
+        public string CreateSalt(int size)
+        {
+            // Generate a pseudo random number
+            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+            byte[] buff = new byte[size];
+            rng.GetBytes(buff);
+
+            // Encode the number as a Base64 string and return it
+            return Convert.ToBase64String(buff);
+        }// end CreateSalt method
+
+        /* Generate a SHA1 hash of the password, using a salt (random string) to padd the password
+         * Padding with a salt decreases probability of the same passwords having the same hash
+         * Used SHA1 with an apparently deprecated method, but meh. I'm not using ASP.NET Membership for
+         * such a simple project. ASP.NET Membership does exactly this anyways, so meh..
+         */
+        public string CreatePasswordHash(string pwd, string salt)
+        {
+            string saltAndPwd = String.Concat(pwd, salt);
+            string hashedPwd = FormsAuthentication.HashPasswordForStoringInConfigFile(saltAndPwd, "SHA1");
+            hashedPwd = String.Concat(hashedPwd, salt);
+            return hashedPwd;
+        }// end CreatePasswordHash method
     
         public byte id { get; set; }
         public string fname { get; set; }
