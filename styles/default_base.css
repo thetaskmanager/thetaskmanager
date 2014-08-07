@@ -10,7 +10,21 @@ body div {
     margin: 2% 20%;
     padding: 1% 2%;
     text-align:center;
+    width:inherit;
+    
 }
+
+.Header {
+    background-color: #5F94DE;
+    border: solid 3px #5483C4;
+    margin: auto;
+    width: 50%;
+}
+#title {
+    font-size: xx-large;
+    font-weight:900;
+}
+
 
 div.aspNetHidden {
     display: none;
