@@ -8,15 +8,14 @@
     <link rel="stylesheet" href="styles/default_base.css">
 </head>
 <body>
-    <form id="form1" runat="server">
+    <header>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder_header" runat="server"></asp:ContentPlaceHolder>
+    </header>
     <div id="bodyContainer">
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder_body" runat="server"></asp:ContentPlaceHolder>
     </div>
-    </form>
     <footer>
-        Copyright: Micheal Walls and Timothy Radder<br />
-        2014
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder_footer" runat="server"></asp:ContentPlaceHolder>
     </footer>
 </body>
 </html>

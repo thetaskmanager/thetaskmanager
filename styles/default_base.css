@@ -20,11 +20,17 @@ body div {
     margin: auto;
     width: 50%;
 }
+
 #title {
+    display: inline;
     font-size: xx-large;
     font-weight:900;
 }
 
+#LoginRegister {
+    display: inline;
+    width: 35%;
+}
 
 div.aspNetHidden {
     display: none;
