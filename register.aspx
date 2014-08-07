@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/public.Master" AutoEventWireup="true" CodeBehind="register.aspx.cs" Inherits="thetaskmanager.register" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_header" runat="server">
     <div class="Header">
-        <h1 id="title"><u>The Task Manager</u></h1>
+        <h1 id="title"><u><a href="Default.aspx">The Task Manager</a></u></h1>
         <div id="LoginRegister">
             <a href="login.aspx">Login</a>
         </div>
@@ -19,9 +19,9 @@
             <asp:Label runat="server" Text="Username" ID="lblUsername"></asp:Label>
             <asp:TextBox runat="server" ID="tbUsername"></asp:TextBox><br />
             <asp:Label runat="server" Text="Password" ID="lblPassword"></asp:Label>
-            <asp:TextBox runat="server" ID="tbPassword"></asp:TextBox><br />
+            <asp:TextBox runat="server" ID="tbPassword" TextMode="Password"></asp:TextBox><br />
             <asp:Label runat="server" Text="Confirm Password" ID="lblConfirmPassword"></asp:Label>
-            <asp:TextBox runat="server" ID="tbConfirmPassword"></asp:TextBox><br /><br />
+            <asp:TextBox runat="server" ID="tbConfirmPassword" TextMode="Password"></asp:TextBox><br /><br />
             <asp:Button runat="server" Text="Register" ID="btRegister" />
         </form>
     </div>
