@@ -7,11 +7,16 @@ body div {
     background-color: #79A9FC;
     border: 3px solid #4B80DB;
     border-radius: 35px;
-    margin: 2% 20%;
+    margin: 2% 15%;
     padding: 1% 2%;
     text-align:center;
     width:inherit;
     
+}
+
+body div div {
+    background-color: #A0C1FA;
+    margin: 1% 10%;
 }
 
 .Header {
@@ -43,6 +48,6 @@ footer {
     background-color: #79A9FC;
     border:solid 3px #4B80DB;
     border-radius: 35px;
-    margin: 2% 40%;
+    margin:1% 40%;
     padding: 1% 2%;
 }

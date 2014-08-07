@@ -70,6 +70,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Images\background.png" />
     <Content Include="login.aspx" />
+    <Content Include="register.aspx" />
     <Content Include="styles\default_base.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -110,6 +111,13 @@
     </Compile>
     <Compile Include="public.Master.designer.cs">
       <DependentUpon>public.Master</DependentUpon>
+    </Compile>
+    <Compile Include="register.aspx.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="register.aspx.designer.cs">
+      <DependentUpon>register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Task.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
