@@ -14,8 +14,10 @@
             your primary manager, and please, enjoy your stay, and help yourself to the complimentary cookies.
         </p>
         <form id="registerForm" runat="server">
-            <asp:Label runat="server" Text="Name" ID="lblName"></asp:Label>
-            <asp:TextBox runat="server" ID="tbName"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required Field" ControlToValidate="tbName"></asp:RequiredFieldValidator><br />
+            <asp:Label runat="server" Text="First Name" ID="lblName"></asp:Label>
+            <asp:TextBox runat="server" ID="tbFName"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required Field" ControlToValidate="tbFName"></asp:RequiredFieldValidator><br />
+            <asp:Label runat="server" Text="Last Name" ID="lblLName"></asp:Label>
+            <asp:TextBox runat="server" ID="tbLName"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Required Field" ControlToValidate="tbLName"></asp:RequiredFieldValidator><br />
             <asp:Label runat="server" Text="Username" ID="lblUsername"></asp:Label>
             <asp:TextBox runat="server" ID="tbUsername"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required Field" ControlToValidate="tbUsername"></asp:RequiredFieldValidator><br />
             <asp:Label runat="server" Text="Password" ID="lblPassword"></asp:Label>

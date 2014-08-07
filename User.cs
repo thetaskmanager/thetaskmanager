@@ -24,6 +24,8 @@ namespace thetaskmanager
         public byte id { get; set; }
         public string fname { get; set; }
         public string lname { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
     
         public virtual ICollection<TaskGroup> TaskGroups { get; set; }
         public virtual ICollection<Task> Tasks { get; set; }
