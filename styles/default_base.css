@@ -1,0 +1,22 @@
+﻿body {
+    background-image: url(../Images/background.png);
+    background-repeat:repeat;
+}
+
+body div {
+    background-color: #79A9FC;
+    border: 3px solid #4B80DB;
+    border-radius: 35px;
+    margin: 2% 20%;
+    padding: 1% 2%;
+    text-align:center;
+}
+
+footer {
+    text-align: center;
+    background-color: #79A9FC;
+    border:solid 3px #4B80DB;
+    border-radius: 35px;
+    margin: 2% 40%;
+    padding: 1% 2%;
+}

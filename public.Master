@@ -1,0 +1,21 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="public.master.cs" Inherits="thetaskmanager._public" %>
+
+<!DOCTYPE html>
+
+<html lang="en-ca">
+<head runat="server">
+    <title>The Task Manager</title>
+    <link rel="stylesheet" href="styles/default_base.css">
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="bodyContainer">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+    <footer>
+        Copyright: Micheal Walls and Timothy Radder<br />
+        2014
+    </footer>
+</html>
