@@ -12,7 +12,7 @@
     <h3>Task List</h3>
     <p>In the table below, you will find all of your tasks.</p>
     <form id="frmGridView" runat="server">
-        <asp:GridView ID="grdTasks" runat="server">
+        <asp:GridView ID="grdTasks" runat="server" OnRowDeleting="grdTasks_RowDeleting">
             <Columns>
                 <asp:CommandField HeaderText="Edit" DeleteText="Edit" />
                 <asp:CommandField HeaderText="Delete" DeleteText="Delete" ShowDeleteButton="true" />

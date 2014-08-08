@@ -65,7 +65,6 @@ namespace thetaskmanager
                 List<TaskGroup> groupsList = new List<TaskGroup>();
 
                 var groupsQueryResult = from taskGroup in dbContextObj.TaskGroups
-                                       where taskGroup.userID == uid
                                        select taskGroup;
 
                 //bind the list of types to the dropdown list
@@ -87,7 +86,6 @@ namespace thetaskmanager
                 byte uid = (byte)Session["UID"];
 
                 var taskQueryResult = from task in dbContextObj.Tasks
-                                      where task.userID == uid
                                       select task;
 
                 //hook the results to the gridView
@@ -128,6 +126,24 @@ namespace thetaskmanager
         protected void clndTaskDate_SelectionChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void grdTasks_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            //get the task's id
+            int TaskID = int.Parse(grdTasks.DataKeys[e.RowIndex].Values["TaskID"].ToString());
+
+            using (var dbContextObj = new thetaskmanagerEntities())
+            {
+                Task taskObj = dbContextObj.Tasks.Where(t => t.id == TaskID).FirstOrDefault();
+
+                taskObj.id = TaskID;
+                dbContextObj.Tasks.Remove(taskObj);
+                dbContextObj.SaveChanges();
+
+                //refresh the task grid
+                refreshGrid();
+            }
         }
     }
 }

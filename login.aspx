@@ -16,7 +16,7 @@
             <asp:Label runat="server" Text="Username" ID="lblUsername"></asp:Label>
             <asp:TextBox runat="server" ID="tbUsername"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Username required" ControlToValidate="tbUsername"></asp:RequiredFieldValidator><br />
             <asp:Label runat="server" Text="Password" ID="lblPassword"></asp:Label>
-            <asp:TextBox runat="server" ID="tbPassword"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Password required" ControlToValidate="tbPassword"></asp:RequiredFieldValidator><br /><br />
+            <asp:TextBox runat="server" ID="tbPassword" TextMode="Password"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Password required" ControlToValidate="tbPassword"></asp:RequiredFieldValidator><br /><br />
             <asp:Button runat="server" ID="btLogin" Text="Login" OnClick="btLogin_Click" /><asp:Label ID="lblLoginMessages" runat="server" Text=""></asp:Label>
         </form>
     </div>
