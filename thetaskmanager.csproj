@@ -134,6 +134,7 @@
     </Compile>
     <Compile Include="taskHome.aspx.cs">
       <DependentUpon>taskHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="taskHome.aspx.designer.cs">
       <DependentUpon>taskHome.aspx</DependentUpon>

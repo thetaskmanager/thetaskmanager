@@ -8,7 +8,11 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_body" runat="server">
-    <p>Thank you for registering with us! You're going to love it here!</p>
+    <p>Thank you for registering with us <asp:Label ID="lblName" runat="server" Text=""></asp:Label>! You're going to love it here!</p>
+    <p>In the table below, you will find all of your tasks</p>
+    <form id="frmGridView" runat="server">
+        <asp:GridView ID="grdTasks" runat="server"></asp:GridView>
+    </form>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_footer" runat="server">
     Copyright: Micheal Walls and Timothy Radder<br />
