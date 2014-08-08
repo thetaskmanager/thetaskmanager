@@ -73,6 +73,7 @@
     <Content Include="login.aspx" />
     <Content Include="register.aspx" />
     <Content Include="styles\default_base.css" />
+    <Content Include="taskHome.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -130,6 +131,12 @@
     </Compile>
     <Compile Include="TaskGroup.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="taskHome.aspx.cs">
+      <DependentUpon>taskHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="taskHome.aspx.designer.cs">
+      <DependentUpon>taskHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="TaskType.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
