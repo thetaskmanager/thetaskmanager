@@ -2,5 +2,6 @@ C:\Users\CrashTestDummy\Documents\GitHub\thetaskmanager\bin\thetaskmanager.dll
 C:\Users\CrashTestDummy\Documents\GitHub\thetaskmanager\bin\thetaskmanager.pdb
 C:\Users\CrashTestDummy\Documents\GitHub\thetaskmanager\bin\EntityFramework.dll
 C:\Users\CrashTestDummy\Documents\GitHub\thetaskmanager\bin\EntityFramework.xml
+C:\Users\CrashTestDummy\Documents\GitHub\thetaskmanager\obj\Debug\thetaskmanager.csprojResolveAssemblyReference.cache
 C:\Users\CrashTestDummy\Documents\GitHub\thetaskmanager\obj\Debug\thetaskmanager.dll
 C:\Users\CrashTestDummy\Documents\GitHub\thetaskmanager\obj\Debug\thetaskmanager.pdb

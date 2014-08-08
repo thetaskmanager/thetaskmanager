@@ -11,6 +11,7 @@ namespace thetaskmanager
 {
     using System;
     using System.Linq;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Security.Cryptography;
     using System.Web.Security;
@@ -24,6 +25,72 @@ namespace thetaskmanager
             this.TaskTypes = new HashSet<TaskType>();
         }
 
+        public Boolean Login(string usernameIn, string passwordIn)
+        {
+            Boolean loginResult = false;
+
+            //Check if the user exists
+            if (DoesUserExist(usernameIn))
+            {
+                using (var dbContextObj = new thetaskmanagerEntities())
+                {
+                    //Get the user's salt
+                    var saltResult = from user in dbContextObj.Users
+                                      where user.username == usernameIn
+                                      select user.salt;
+                    string[] saltResult_array;
+                    saltResult_array = saltResult.ToArray();
+                    this.salt = saltResult_array[0];
+
+                    //Take the incoming password and hash it with the salt
+                    string hashedPassword = CreatePasswordHash(passwordIn, saltResult_array[0]);
+
+                    //Get the existing password hash from the database
+                    var passwordResult = from user in dbContextObj.Users
+                                  where user.username == usernameIn
+                                  select user.password;
+                    string[] passwordResult_array;
+                    passwordResult_array = passwordResult.ToArray();
+
+                    //compare the two password hashes
+                    if (hashedPassword == passwordResult_array[0])
+                    {
+                        //set the username
+                        this.username = usernameIn;
+
+                        //get and set user id
+                        var uidResult = from user in dbContextObj.Users
+                                      where user.username == usernameIn
+                                      select user.id;
+                        byte[] uidResult_array = uidResult.ToArray();
+                        this.id = uidResult_array[0];
+
+                        //get and set first name
+                        var fnameResult = from user in dbContextObj.Users
+                                        where user.username == usernameIn
+                                        select user.fname;
+                        string[] fnameResult_array = fnameResult.ToArray();
+                        this.fname = fnameResult_array[0];
+
+                        //get and set last name
+                        var lnameResult = from user in dbContextObj.Users
+                                          where user.username == usernameIn
+                                          select user.lname;
+                        string[] lnameResult_array = lnameResult.ToArray();
+                        this.lname = lnameResult_array[0];
+
+                        //set the loginResult flag to indicate the user was successfully logged in
+                        loginResult = true;
+                    }
+                }// using construct
+            }
+
+            return loginResult;
+        }//end Login method
+
+        /**
+         * Check to see if the user exists in database. Return true if exists or false if not
+         */
         public Boolean DoesUserExist(string usernameIn)
         {
             using (var dbContextObj = new thetaskmanagerEntities())
@@ -48,7 +115,7 @@ namespace thetaskmanager
                 }// end if-else flow control
 
                 return isDuplicate;
-            }
+            }// using construct
         }
 
         //Create a random number to use as a "salt" (Padd the password)
@@ -63,16 +130,18 @@ namespace thetaskmanager
             return Convert.ToBase64String(buff);
         }// end CreateSalt method
 
-        /* Generate a SHA1 hash of the password, using a salt (random string) to padd the password
-         * Padding with a salt decreases probability of the same passwords having the same hash
-         * Used SHA1 with an apparently deprecated method, but meh. I'm not using ASP.NET Membership for
-         * such a simple project. ASP.NET Membership does exactly this anyways, so meh..
-         */
+        //Hash the passing, using a salt
         public string CreatePasswordHash(string pwd, string salt)
         {
+            //Append the salt onto the end of the password
             string saltAndPwd = String.Concat(pwd, salt);
+
+            //Generate a SHA1 hash of the salt and password
             string hashedPwd = FormsAuthentication.HashPasswordForStoringInConfigFile(saltAndPwd, "SHA1");
+
+            //Append the salt onto the end of the hash of the hashed password and salt
             hashedPwd = String.Concat(hashedPwd, salt);
+
             return hashedPwd;
         }// end CreatePasswordHash method
     

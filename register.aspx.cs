@@ -39,7 +39,7 @@ namespace thetaskmanager
                 newUser.lname = tbLName.Text;
 
                 /**
-                 * Here we use a using() expression so that once the expression is finished
+                 * Here we use a using() construct so that once the expression is finished
                  * evaluating the new object that was instantiated calls it's Dispose() method
                  * to destroy itself cleanly, without us manually worrying about it.
                  */
@@ -48,9 +48,26 @@ namespace thetaskmanager
                     contextObj.Users.Add(newUser);
 
                     contextObj.SaveChanges();
-                }// end using expression
+                }// end using construct
 
-                Response.Redirect("taskHome.aspx");
+                //Login the new user. Redirects on success
+                Boolean loginResult;
+                loginResult = newUser.Login(newUser.username, newUser.password);
+
+                if (loginResult)
+                {
+                    //Store object properties in the session
+                    Session["UID"] = newUser.id;
+                    Session["Username"] = newUser.username;
+                    Session["FName"] = newUser.fname;
+                    Session["LName"] = newUser.lname;
+
+                    Response.Redirect("taskHome.aspx");
+                }
+                else
+                {
+                    lblRegistrationMessages.Text = "Registration successfull, but Login failed!";
+                }// if-else statement to control login success
             }// if-else statement to control duplicate users
 
         }// end event handler for Register button

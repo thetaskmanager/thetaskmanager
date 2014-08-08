@@ -13,5 +13,25 @@ namespace thetaskmanager
         {
 
         }
-    }
+
+        protected void btLogin_Click(object sender, EventArgs e)
+        {
+            User userObj = new User();
+            Boolean loginResult;
+            
+            loginResult = userObj.Login(tbUsername.Text, tbPassword.Text);
+
+            if( !loginResult ) {
+                lblLoginMessages.Text = "Login failed!";
+            } else {
+                //Store object properties in the session
+                Session["UID"] = userObj.id;
+                Session["Username"] = userObj.username;
+                Session["FName"] = userObj.fname;
+                Session["LName"] = userObj.lname;
+
+                Response.Redirect("taskHome.aspx");
+            }// if-else statement
+        }// event handler for login button
+    }// login class
 }
