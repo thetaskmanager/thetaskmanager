@@ -42,7 +42,6 @@ namespace thetaskmanager
                 List<TaskType> typesList = new List<TaskType>();
 
                 var groupsQueryResult = from taskType in dbContextObj.TaskTypes
-                                        where taskType.userID == uid
                                         select taskType;
 
                 //bind the list of types to the dropdown list
